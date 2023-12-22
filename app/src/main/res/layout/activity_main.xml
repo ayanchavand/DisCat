@@ -32,15 +32,26 @@
         app:srcCompat="@drawable/icon" />
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/submitCataas"
         android:layout_width="137dp"
         android:layout_height="63dp"
-        android:text="Cats :3"
+        android:text="Cataas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image"
         app:layout_constraintVertical_bias="0.421" />
+
+    <Button
+        android:id="@+id/submitCatapi"
+        android:layout_width="137dp"
+        android:layout_height="63dp"
+        android:text="catapi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintVertical_bias="0.794" />
 
     <TextView
         android:id="@+id/textView"
