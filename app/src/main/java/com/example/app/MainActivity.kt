@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -22,22 +23,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val image: ImageView =  findViewById(R.id.image)
-        val submitCataas: Button = findViewById(R.id.submitCataas)
-        val submitCatApi:Button = findViewById(R.id.submitCatapi)
-        submitCataas.setOnClickListener{
+        val submitCat: Button = findViewById(R.id.submitCat)
+        val apiToggle: Switch = findViewById(R.id.apiToggle)
+
+
+
+        submitCat.setOnClickListener {
             Glide.with(this).clear(image)
+            if(apiToggle.isChecked()){
+                val imageUrl = "https://cataas.com/cat?timestamp=${System.currentTimeMillis()}"
+                Glide.with(this).load(imageUrl).into(image)
+            }
 
-            val imageUrl = "https://cataas.com/cat?timestamp=${System.currentTimeMillis()}"
-            Glide.with(this).load(imageUrl).into(image)
-        }
-
-        submitCatApi.setOnClickListener {
-            val response = httpReq("null", "https://api.thecatapi.com/v1/images/search")
-            Log.d("LOG!", response)
-            val imageUrl = jsonParser(response)
-            Log.d("LOG!", imageUrl)
-            Glide.with(this).load(imageUrl).into(image)
-
+            else{
+                val response = httpReq("null", "https://api.thecatapi.com/v1/images/search")
+                Log.d("LOG!", response)
+                val imageUrl = jsonParser(response)
+                Log.d("LOG!", imageUrl)
+                Glide.with(this).load(imageUrl).into(image)
+            }
         }
     }
 }
