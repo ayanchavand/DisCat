@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Switch
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -24,24 +25,36 @@ class MainActivity : AppCompatActivity() {
 
         val image: ImageView =  findViewById(R.id.image)
         val submitCat: Button = findViewById(R.id.submitCat)
+        val submitDog: Button = findViewById(R.id.submitDog)
         val apiToggle: Switch = findViewById(R.id.apiToggle)
-
+        val apiText: TextView = findViewById(R.id.apiText)
 
 
         submitCat.setOnClickListener {
             Glide.with(this).clear(image)
             if(apiToggle.isChecked()){
+                apiText.text = "API: cataas.com"
                 val imageUrl = "https://cataas.com/cat?timestamp=${System.currentTimeMillis()}"
                 Glide.with(this).load(imageUrl).into(image)
             }
 
             else{
+                apiText.text = "API: thecatapi.com"
                 val response = httpReq("null", "https://api.thecatapi.com/v1/images/search")
                 Log.d("LOG!", response)
-                val imageUrl = jsonParser(response)
+                val imageUrl = jsonParserCat(response)
                 Log.d("LOG!", imageUrl)
                 Glide.with(this).load(imageUrl).into(image)
             }
+        }
+
+        submitDog.setOnClickListener {
+            apiText.text = "API: dog.ceo"
+            val response = httpReq("", "https://dog.ceo/api/breeds/image/random")
+            val imageUrl = jsonParserDog(response)
+            Log.d("LOG!", imageUrl)
+            Glide.with(this).load(imageUrl).into(image)
+
         }
     }
 }
@@ -70,7 +83,7 @@ private fun httpReq(apiKey: String, url: String): String{
     return jsonResponse
 }
 
-private fun jsonParser(responseString: String): String{
+private fun jsonParserCat(responseString: String): String{
     val gson = Gson()
     val catDataArray = gson.fromJson(responseString, Array<CatData>::class.java)
 
@@ -85,3 +98,11 @@ private fun jsonParser(responseString: String): String{
         return ""
     }
 }
+
+private fun jsonParserDog(responseString: String): String{
+    val gson = Gson()
+    val dogData = gson.fromJson(responseString, DogData::class.java)
+
+    return dogData.message;
+}
+
