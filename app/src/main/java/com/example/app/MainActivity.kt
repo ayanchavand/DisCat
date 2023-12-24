@@ -8,10 +8,10 @@ import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
@@ -20,6 +20,7 @@ import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Log message for debugging
         Log.d("LOG", "Hello")
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         // Click listener for the "Submit Cat" button
         submitCat.setOnClickListener {
             // Coroutine launched on the main thread
-            GlobalScope.launch(Dispatchers.Main) {
+            lifecycleScope.launch(Dispatchers.Main) {
                 // Clear the image
                 Glide.with(this@MainActivity).clear(image)
 
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         // Click listener for the "Submit Dog" button
         submitDog.setOnClickListener {
             // Coroutine launched on the main thread
-            GlobalScope.launch(Dispatchers.Main) {
+            lifecycleScope.launch(Dispatchers.Main) {
                 // Update the API text
                 apiText.text = "API: dog.ceo"
                 try {
@@ -114,8 +115,7 @@ private suspend fun httpReq(apiKey: String, url: String): String = withContext(D
             if (response.isSuccessful) {
                 // Return the response body as a string
                 response.body!!.string()
-            } else {
-                // Throw an exception for unexpected HTTP codes
+            } else {              // Throw an exception for unexpected HTTP codes
                 throw IOException("Unexpected HTTP code: ${response.code}")
             }
         }
