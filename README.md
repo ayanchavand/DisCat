@@ -49,7 +49,7 @@ Follow these steps to get the CatApp up and running on your local machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/cat-app.git
+   git clone https://github.com/ayanchavand/cat-pics.git
    ```
 
 2. Open the project in Android Studio.
