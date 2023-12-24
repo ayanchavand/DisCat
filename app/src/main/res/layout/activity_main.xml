@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="144dp"
         android:layout_height="31dp"
-        android:text="Kitty"
+        android:text="Pets"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
