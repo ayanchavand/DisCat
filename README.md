@@ -24,23 +24,8 @@ CatApp is a delightful mobile application that lets users explore and enjoy a co
 
 - **OkHttp:** A robust HTTP client for making network requests, ensuring smooth communication with APIs.
 
-- **Coroutines:** Leveraging Kotlin coroutines for asynchronous programming, enabling responsive UI and efficient network requests.
-
 - **Gson:** A library for JSON serialization and deserialization, crucial for handling API responses.
 
-### Architecture
-
-CatApp follows the Model-View-ViewModel (MVVM) architecture, promoting separation of concerns and maintainability.
-
-- **Model:** Represents the data and business logic of the application, including classes for API data (CatData, DogData) and data parsing functions.
-
-- **View:** Represents the UI components, implemented in XML layout files.
-
-- **ViewModel:** Acts as an intermediary between the Model and the View, handling UI-related logic and exposing data to the UI.
-
-### Asynchronous Programming
-
-Coroutines are employed to perform asynchronous tasks, such as fetching images from APIs. This ensures a responsive user interface and optimal network request handling.
 
 ## Getting Started
 
