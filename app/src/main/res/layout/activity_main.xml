@@ -96,4 +96,14 @@
         app:layout_constraintTop_toBottomOf="@+id/submitCat"
         app:layout_constraintVertical_bias="0.406" />
 
+    <ImageButton
+        android:id="@+id/download"
+        android:layout_width="67dp"
+        android:layout_height="61dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toEndOf="@+id/submitCat"
+        app:srcCompat="@android:drawable/stat_sys_download"
+        tools:layout_editor_absoluteY="533dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

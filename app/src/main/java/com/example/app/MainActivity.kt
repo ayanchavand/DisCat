@@ -1,8 +1,11 @@
 package com.example.app
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
@@ -35,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         val submitDog: Button = findViewById(R.id.submitDog)
         val apiToggle: Switch = findViewById(R.id.apiToggle)
         val apiText: TextView = findViewById(R.id.apiText)
+        val download: ImageButton = findViewById(R.id.download)
+
+        var URL: String = "";
 
         // Function to display Toast messages
         fun showToast(message: String) {
@@ -67,6 +73,7 @@ class MainActivity : AppCompatActivity() {
 
                         // Load the cat image using Glide
                         Glide.with(this@MainActivity).load(imageUrl).into(image)
+                        URL = imageUrl
                     } catch (e: Exception) {
                         // Handle exceptions, e.g., network errors
                         Log.e("LOG!", "Error fetching data", e)
@@ -92,6 +99,7 @@ class MainActivity : AppCompatActivity() {
 
                     // Load the dog image using Glide
                     Glide.with(this@MainActivity).load(imageUrl).into(image)
+                    URL = imageUrl
                 } catch (e: Exception) {
                     // Handle exceptions, e.g., network errors
                     Log.e("LOG!", "Error fetching data", e)
@@ -100,6 +108,17 @@ class MainActivity : AppCompatActivity() {
                     showToast("Something went wrong: Error fetching data")
                 }
             }
+        }
+
+        download.setOnClickListener {
+            if(URL == ""){
+                    showToast("No image loaded")
+            }
+            else{
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(URL))
+                startActivity(intent)
+            }
+
         }
     }
 }
@@ -150,5 +169,4 @@ private fun jsonParserDog(responseString: String): String {
     // Return the dog image URL
     return dogData.message
 }
-
 
