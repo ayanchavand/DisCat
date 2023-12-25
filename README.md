@@ -43,16 +43,11 @@ Follow these steps to get the CatApp up and running on your local machine:
 
 ## Releases
 
-Check out the latest releases to get access to new features, improvements, and bug fixes. Visit the [Releases](https://github.com/your-username/cat-app/releases) page for more details.
+Check out the latest releases to get access to new features, improvements, and bug fixes. Visit the [Releases](https://github.com/ayanchavand/cat-pics/releases) page for more details.
 
 ## Contributions
 
 Contributions are welcome! If you have any ideas for improvement, feature requests, or bug reports, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ---
 
 Happy exploring the adorable world of cats and dogs with CatApp! 🐾
