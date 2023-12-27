@@ -47,6 +47,13 @@ dependencies {
 
     //gson
     implementation("com.google.code.gson:gson:2.8.7")
+
+    implementation ("androidx.room:room-runtime:2.4.0")
+    annotationProcessor ("androidx.room:room-compiler:2.4.0")
+
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

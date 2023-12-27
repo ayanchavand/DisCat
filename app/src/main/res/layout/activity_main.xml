@@ -98,12 +98,22 @@
 
     <ImageButton
         android:id="@+id/download"
-        android:layout_width="67dp"
-        android:layout_height="61dp"
+        android:layout_width="91dp"
+        android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toEndOf="@+id/submitCat"
         app:srcCompat="@android:drawable/stat_sys_download"
         tools:layout_editor_absoluteY="533dp" />
+
+    <Button
+        android:id="@+id/like"
+        android:layout_width="96dp"
+        android:layout_height="53dp"
+        android:text=" 💗"
+        app:layout_constraintEnd_toStartOf="@+id/submitCat"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="540dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
