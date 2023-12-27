@@ -1,4 +1,4 @@
-package com.example.app
+package com.example.app.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -15,6 +15,7 @@ class CatViewModel: ViewModel() {
 
 
     var URL: String =""
+
     // Function to make an asynchronous HTTP request
     private suspend fun httpReq(apiKey: String, url: String): String = withContext(Dispatchers.IO) {
         val client = OkHttpClient()
