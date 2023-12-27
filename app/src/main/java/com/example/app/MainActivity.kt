@@ -7,7 +7,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,12 +30,9 @@ class MainActivity : AppCompatActivity() {
         val image: ImageView = findViewById(R.id.image)
         val submitCat: Button = findViewById(R.id.submitCat)
         val submitDog: Button = findViewById(R.id.submitDog)
-        val apiToggle: Switch = findViewById(R.id.apiToggle)
         val apiText: TextView = findViewById(R.id.apiText)
         val download: ImageButton = findViewById(R.id.download)
         val like: Button = findViewById(R.id.like)
-
-        var URL: String = ""
 
         catViewModel = ViewModelProvider(this)[CatViewModel::class.java]
 
