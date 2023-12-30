@@ -117,7 +117,7 @@ class MainFragment : Fragment() {
                     db.likedImageDao().insert(likedImage)
 
                 } else {
-                    showToast("No image loaded, Cannot add to favs")
+                    showToast("The image is either empty or already liked")
                 }
 
             }

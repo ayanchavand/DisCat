@@ -6,15 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".viewmodel.MainActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="190dp"
+        android:layout_height="49dp"
+        android:gravity="left"
+        android:text="DisCat"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
-        android:layout_width="414dp"
-        android:layout_height="671dp"
+        android:layout_width="406dp"
+        android:layout_height="626dp"
         app:layout_constraintBottom_toTopOf="@+id/tablayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
