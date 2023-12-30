@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         val apiText: TextView = findViewById(R.id.apiText)
         val download: ImageButton = findViewById(R.id.download)
         val like: Button = findViewById(R.id.like)
+        val likedPage: Button = findViewById(R.id.likedPage)
 
         catViewModel = ViewModelProvider(this)[CatViewModel::class.java]
 
@@ -94,22 +95,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         like.setOnClickListener{
-            val likedImage = LikedImage(image = catViewModel.URL)
-            lifecycleScope.launch {
-                if(catViewModel.URL.isBlank()) {
-                    showToast("No image loaded, Cannot add to favs")
-                } else {
-                    db.likedImageDao().insert(likedImage)
-                }
 
+            lifecycleScope.launch {
                 // Assuming you have a LikedImageDao instance
                 val allLikedImages: List<LikedImage> = likedImageDao.getAllLikedImages()
+                var exists: Boolean = true
 
                 // Iterate through the list and print or log the data
                 for (likedImage in allLikedImages) {
                     Log.d("Database Data", "ID: ${likedImage.id}, Image URL: ${likedImage.image}")
+                    if(likedImage.image == catViewModel.URL){
+                        exists = true
+                        break
+                    }
+                    else{
+                        exists = false
+                    }
                 }
+
+                if(catViewModel.URL.isNotBlank() and !exists) {
+                    val likedImage = LikedImage(image = catViewModel.URL)
+                    db.likedImageDao().insert(likedImage)
+
+                } else {
+                    showToast("No image loaded, Cannot add to favs")
+                }
+
             }
+        }
+
+        likedPage.setOnClickListener{
+            setContentView(R.layout.activity_liked)
         }
     }
 }
