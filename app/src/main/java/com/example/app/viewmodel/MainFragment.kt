@@ -7,8 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -20,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.example.app.R
 import com.example.app.db.AppDatabase
 import com.example.app.db.LikedImage
+import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
@@ -43,11 +42,12 @@ class MainFragment : Fragment() {
 
         // View references
         val image: ImageView = view.findViewById(R.id.image)
-        val submitCat: Button = view.findViewById(R.id.submitCat)
-        val submitDog: Button = view.findViewById(R.id.submitDog)
+        val submitCat: MaterialButton = view.findViewById(R.id.submitCat)
+        val submitDog: MaterialButton = view.findViewById(R.id.submitDog)
         val apiText: TextView = view.findViewById(R.id.apiText)
-        val download: Button = view.findViewById(R.id.download)
-        val like: Button = view.findViewById(R.id.like)
+        val download: MaterialButton = view.findViewById(R.id.download)
+        val like: MaterialButton = view.findViewById(R.id.like)
+        val share: MaterialButton = view.findViewById(R.id.share)
 
         catViewModel = ViewModelProvider(this)[CatViewModel::class.java]
 
@@ -121,6 +121,16 @@ class MainFragment : Fragment() {
                 }
 
             }
+        }
+
+        share.setOnClickListener{
+
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, catViewModel.URL)
+            }
+            startActivity(Intent.createChooser(shareIntent, "Share via"))
         }
 
         return view
