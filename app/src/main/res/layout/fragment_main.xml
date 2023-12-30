@@ -9,74 +9,47 @@
 
     <!-- Your MainFragment UI components go here -->
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="144dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:text="Pets"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="408dp"
         android:layout_height="371dp"
-        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submitCat"
-        android:layout_width="123dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="8dp"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
         android:text="Cats 🐱"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/submitDog"
-        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/like"
-        style="@style/Widget.Material3.Button.TextButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/download" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submitDog"
-        android:layout_width="135dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="52dp"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="60dp"
         android:text="Dogs 🐶"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/download"
-        style="@style/Widget.Material3.Button.TextButton"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/like"
-        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
-        app:icon="@drawable/favorite"
-        app:iconGravity="textStart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image" />
+        app:layout_constraintTop_toBottomOf="@+id/download" />
 
     <TextView
         android:id="@+id/apiText"
         android:layout_width="190dp"
         android:layout_height="23dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="184dp"
         android:text="Find images to see the API used"
         android:textAlignment="center"
         android:textColor="@color/design_default_color_secondary"
@@ -87,16 +60,39 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/download"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.618"
-        app:layout_constraintStart_toEndOf="@+id/like"
-        app:layout_constraintTop_toBottomOf="@+id/image"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
         app:icon="@drawable/download"
         app:iconGravity="textStart"
-        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"/>
+        app:layout_constraintEnd_toStartOf="@+id/share"
+        app:layout_constraintStart_toEndOf="@+id/like"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/share"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="60dp"
+        app:icon="@drawable/share"
+        app:iconGravity="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/like"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="12dp"
+        app:icon="@drawable/favorite"
+        app:iconGravity="textStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
