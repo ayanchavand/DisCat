@@ -8,8 +8,8 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="410dp"
-        android:layout_height="76dp"
+        android:layout_width="412dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,18 +22,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tab 1" />
+            android:icon="@drawable/home"
+            android:text="Home" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabItem2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tab 2"
+            android:text="Favorites"
+            android:icon="@drawable/favorite"
             tools:layout_editor_absoluteX="204dp"
             tools:layout_editor_absoluteY="352dp" />
-
-        <!-- Add more TabItems as needed -->
 
     </com.google.android.material.tabs.TabLayout>
 

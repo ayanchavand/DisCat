@@ -6,98 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".viewmodel.MainActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="144dp"
-        android:layout_height="31dp"
-        android:text="Pets"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/image"
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="414dp"
+        android:layout_height="671dp"
+        app:layout_constraintBottom_toTopOf="@+id/tablayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="371dp"
-        android:layout_height="376dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166"
-        app:srcCompat="@drawable/icon" />
-
-    <Button
-        android:id="@+id/submitCat"
-        android:layout_width="123dp"
-        android:layout_height="64dp"
-        android:text="Cats"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintVertical_bias="0.421" />
-
-    <TextView
-        android:id="@+id/apiText"
-        android:layout_width="190dp"
-        android:layout_height="23dp"
-        android:text="Find images to see the API used"
-        android:textAlignment="center"
-        android:textColor="@color/design_default_color_secondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
-    <Button
-        android:id="@+id/submitDog"
-        android:layout_width="143dp"
-        android:layout_height="63dp"
-        android:text="Dogs"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/apiText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitCat"
-        app:layout_constraintVertical_bias="0.406" />
-
-    <ImageButton
-        android:id="@+id/download"
-        android:layout_width="91dp"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="412dp"
         android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toEndOf="@+id/submitCat"
-        app:srcCompat="@android:drawable/stat_sys_download"
-        tools:layout_editor_absoluteY="533dp" />
-
-    <Button
-        android:id="@+id/like"
-        android:layout_width="96dp"
-        android:layout_height="53dp"
-        android:text=" 💗"
-        app:layout_constraintEnd_toStartOf="@+id/submitCat"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="540dp" />
-
-    <Button
-        android:id="@+id/likedPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="likedPage"
-        app:layout_constraintBottom_toTopOf="@+id/submitCat"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image" />
+        app:tabGravity="fill"
+        app:tabMode="fixed">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabItem1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:icon="@drawable/home"
+
+            android:text="Home" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabItem2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:icon="@drawable/favorite"
+            android:text="Favorites"
+            tools:layout_editor_absoluteX="204dp"
+            tools:layout_editor_absoluteY="352dp" />
+
+    </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,131 +1,62 @@
 package com.example.app.viewmodel
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.room.Room
-import com.bumptech.glide.Glide
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.example.app.R
-import com.example.app.db.AppDatabase
-import com.example.app.db.LikedImage
-import kotlinx.coroutines.launch
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var catViewModel: CatViewModel
 
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var adapter: YourPagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         // Log message for debugging
         Log.d("LOG", "Hello")
 
         // Standard onCreate setup
         super.onCreate(savedInstanceState)
-
-        val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "liked_images"
-        ).build()
-
-        // Access the LikedImageDao
-        val likedImageDao = db.likedImageDao()
-
         setContentView(R.layout.activity_main)
 
-        // View references
-        val image: ImageView = findViewById(R.id.image)
-        val submitCat: Button = findViewById(R.id.submitCat)
-        val submitDog: Button = findViewById(R.id.submitDog)
-        val apiText: TextView = findViewById(R.id.apiText)
-        val download: ImageButton = findViewById(R.id.download)
-        val like: Button = findViewById(R.id.like)
-        val likedPage: Button = findViewById(R.id.likedPage)
+        val tabLayout: TabLayout = findViewById(R.id.tablayout)
+        viewPager2 = findViewById(R.id.viewPager)
+        adapter = YourPagerAdapter(this)
 
-        catViewModel = ViewModelProvider(this)[CatViewModel::class.java]
+        viewPager2.adapter = adapter
 
-        // Function to display Toast messages
-        fun showToast(message: String) {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        }
-
-        // Click listener for the "Submit Cat" button
-        submitCat.setOnClickListener {
-            apiText.text = "API: thecatapi.com"
-            catViewModel.catButtonHandler(
-                onSuccess = {imageUrl ->
-                    Glide.with(this).load(imageUrl).into(image)
-                },
-                onError = { error ->
-                    // Show a Toast message for error notification
-                    showToast("Something went wrong: $error")
-                }
-            )
-        }
-
-        // Click listener for the "Submit Dog" button
-        submitDog.setOnClickListener {
-            // Update the API text
-            apiText.text = "API: dog.ceo"
-            catViewModel.dogButtonClick(
-                onSuccess = { imageUrl ->
-                    Glide.with(this@MainActivity).load(imageUrl).into(image)},
-                onError = {error ->
-                    // Show a Toast message for error notification
-                    showToast("Something went wrong: $error")
-                }
-            )
-        }
-
-        download.setOnClickListener {
-            if (catViewModel.URL.isBlank()) {
-                showToast("No image loaded")
-            } else {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(catViewModel.URL))
-                startActivity(intent)
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            tab.text = when (position) {
+                0 -> "Home"
+                1 -> "Favorites"
+                else -> null
             }
-        }
-
-        like.setOnClickListener{
-
-            lifecycleScope.launch {
-                // Assuming you have a LikedImageDao instance
-                val allLikedImages: List<LikedImage> = likedImageDao.getAllLikedImages()
-                var exists: Boolean = true
-
-                // Iterate through the list and print or log the data
-                for (likedImage in allLikedImages) {
-                    Log.d("Database Data", "ID: ${likedImage.id}, Image URL: ${likedImage.image}")
-                    if(likedImage.image == catViewModel.URL){
-                        exists = true
-                        break
-                    }
-                    else{
-                        exists = false
-                    }
-                }
-
-                if(catViewModel.URL.isNotBlank() and !exists) {
-                    val likedImage = LikedImage(image = catViewModel.URL)
-                    db.likedImageDao().insert(likedImage)
-
-                } else {
-                    showToast("No image loaded, Cannot add to favs")
-                }
-
+            tab.icon = when (position){
+                0 -> ContextCompat.getDrawable(this, R.drawable.home)
+                1 -> ContextCompat.getDrawable(this, R.drawable.favorite)
+                else -> null
             }
-        }
+        }.attach()
 
-        likedPage.setOnClickListener{
-            setContentView(R.layout.activity_liked)
+    }
+}
+
+class YourPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
+    override fun getItemCount(): Int = 2 // Number of Fragments
+
+    override fun createFragment(position: Int): Fragment {
+        return when (position) {
+            0 -> MainFragment() // Replace with your actual HomeFragment
+            1 -> FavoritesFragment() // Replace with your actual FavoritesFragment
+            else -> throw IllegalArgumentException("Invalid position")
         }
     }
 }
+
