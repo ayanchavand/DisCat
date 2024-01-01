@@ -1,16 +1,9 @@
-# CatApp
+# DisCat
 
 ## Overview
 
-CatApp is a delightful mobile application that lets users explore and enjoy a collection of cat and dog images from various APIs. Whether you're a cat lover, a dog enthusiast, or just someone looking for adorable animal pictures, CatApp has got you covered.
+DisCat is a delightful mobile application that lets users explore and enjoy a collection of cat and dog images from various APIs. Whether you're a cat lover, a dog enthusiast, or just someone looking for adorable animal pictures, CatApp has got you covered.
 
-### Features
-
-- **Cat and Dog Images:** Explore a vast collection of cat and dog images from different sources.
-
-- **Toggle Between APIs:** Switch between cataas.com and thecatapi.com to see a variety of cat images.
-
-- **Random Dog Images:** Fetch random dog images from dog.ceo for a dose of canine cuteness.
 
 ## Technical Details
 
@@ -34,7 +27,7 @@ Follow these steps to get the CatApp up and running on your local machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ayanchavand/cat-pics.git
+   git clone https://github.com/ayanchavand/DisCat.git
    ```
 
 2. Open the project in Android Studio.
