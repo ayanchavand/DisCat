@@ -1,4 +1,4 @@
-package com.example.app.viewmodel
+package com.example.app.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.example.app.R
 import com.example.app.db.AppDatabase
 import com.example.app.db.LikedImage
+import com.example.app.viewmodel.CatViewModel
 import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.launch
 
